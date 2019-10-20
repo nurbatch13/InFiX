@@ -1,0 +1,210 @@
+﻿<Window x:Class="InFiX.MainWindow" ResizeMode="CanResize"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InFiX"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Name="Menu" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Label Background="Black"  Grid.Row="0" Grid.RowSpan="6" />
+            <Button Name="AllHazards" Content="All Hazards" Click="AllHazards_Click" Margin="20"  Grid.Row="1" Grid.Column="0" FontFamily="Bahnschrift Light"/>
+            <Button Name="NaturalHazards" Content="Natural Hazards" Click="NaturalHazards_Click" Margin="20" FontFamily="Bahnschrift Light" Grid.Row="2" Grid.Column="0"/>
+            <Button Name="SocialFactors" Content="Social Factors" Click="SocialFactors_Click" Margin="20"  Grid.Row="3" FontFamily="Bahnschrift Light" Grid.Column="0"/>
+            <Button Name="EconomicFactors" Content="Economic Factors" Click="EconomicFactors_Click" Margin="20"  Grid.Row="4" FontFamily="Bahnschrift Light" Grid.Column="0"/>
+            <Button Name="Options" BorderBrush="Transparent" Background="Transparent" Click="Options_Click" Margin="0 0" Grid.Row="5"  Grid.Column="0">
+                <StackPanel>
+                    <Image Source="settings.png" Width="50"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <Grid Name="AllMap" Visibility="Hidden" Grid.Column="1">
+            <Label Background="Black"></Label>
+            <Image Name="allHMap" Source="allHMap.png" Grid.Row="0"></Image>
+        </Grid>
+        <Grid Name="infix" Visibility="Visible" Grid.Column="1">
+            <Label Background="Black"/>
+            <Image Source="index.jpg"/>
+            <Label Content="InFiX" FontSize="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White" FontFamily="Showcard Gothic" />
+        </Grid>
+
+        <Grid Name="natural" Visibility="Hidden" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Label Background="Black"  Grid.RowSpan="4"/>
+            <Image Source="global.jpg" Width="600" Grid.RowSpan="4"/>
+            <Label Content="Natural" FontSize="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White" FontFamily="Showcard Gothic" Grid.RowSpan="4" />
+            <Button  Name="nGlobal" Content="Show map" Click="NaturalMap_Click" FontFamily="Bahnschrift Light" Grid.Row="2" Margin="150 20"/>
+            <ComboBox Name="nDisasters"  Grid.Row="1" Margin="150 20" FontSize="12" FontFamily="Bahnschrift Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Text="">
+                <ComboBoxItem IsSelected="True">Global</ComboBoxItem>
+                <ComboBoxItem>Fires</ComboBoxItem>
+                <ComboBoxItem>Floods</ComboBoxItem>
+                <ComboBoxItem>Droughts</ComboBoxItem>
+                <ComboBoxItem>Earthquakes</ComboBoxItem>
+                <ComboBoxItem>Hurricanes</ComboBoxItem>
+            </ComboBox>
+        </Grid>
+        
+        
+        <Grid Name="social" Visibility="Hidden" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Label Background="#FF141D3A"  Grid.RowSpan="4"/>
+            <Image Source="social.jpg"  Width="600" Grid.RowSpan="4"/>
+            <Label Content="Social" FontSize="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White" FontFamily="Showcard Gothic" Grid.RowSpan="4" />
+            <Button  Name="sGlobal" FontFamily="Bahnschrift Light" Content="Show map" Grid.Row="2" Margin="150 20" Click="SocialMap_Click"/>
+            <ComboBox  Name="sDisasters" Grid.Row="1" Margin="150 20" FontSize="12" FontFamily="Bahnschrift Light" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="SocialFactorChanged">
+                <ComboBoxItem IsSelected="True">Global</ComboBoxItem>
+                <ComboBoxItem>Violence</ComboBoxItem>
+                <ComboBoxItem>War</ComboBoxItem>
+                <ComboBoxItem>Death rate(under 5 yrs)</ComboBoxItem>
+                <ComboBoxItem>Death rate</ComboBoxItem>
+                <ComboBoxItem>Birth rate</ComboBoxItem>
+                <ComboBoxItem>Average life expectancy</ComboBoxItem>
+                <ComboBoxItem>Cancer</ComboBoxItem>
+                <ComboBoxItem>HIV</ComboBoxItem>
+                <ComboBoxItem>Malaria</ComboBoxItem>
+                <ComboBoxItem>Tuberculosis</ComboBoxItem>
+            </ComboBox>
+        </Grid>
+
+        
+        
+        
+        <Grid Name="economic" Visibility="Hidden" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Label Background="#FF0D0B0A"  Grid.RowSpan="4"/>
+            <Image Source="economic.png"  Width="600" Grid.RowSpan="4"/>
+            <Label Content="Economics" FontSize="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White" FontFamily="Showcard Gothic" Grid.RowSpan="4" />
+            <Button  Name="eGlobal" FontFamily="Bahnschrift Light" Content="Show map" Grid.Row="2" Margin="150 20" Click="EconomicMap_Click"/>
+            <ComboBox  Name="eDisasters"  FontFamily="Bahnschrift Light" Grid.Row="1" Margin="150 20" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <ComboBoxItem IsSelected="True">Global</ComboBoxItem>
+                <ComboBoxItem>GNP</ComboBoxItem>
+                <ComboBoxItem>GNP per capita</ComboBoxItem>
+                <ComboBoxItem>Precarious work</ComboBoxItem>
+                <ComboBoxItem>Crisis</ComboBoxItem>
+                <ComboBoxItem>Unemployed rate</ComboBoxItem>
+            </ComboBox>
+        </Grid>
+
+        
+
+        <Grid Name="settings" Visibility="Hidden" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Change factors importance" FontSize="30" FontFamily="Bahnschrift Light" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="0" VerticalAlignment="Center"/>
+            <ComboBox Name="importance" Grid.Row="1" FontFamily="Bahnschrift Light" Margin="150 20" FontSize="12" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <ComboBoxItem IsSelected="True">Global</ComboBoxItem>
+                <ComboBoxItem>GNP</ComboBoxItem>
+                <ComboBoxItem>GNP per capita</ComboBoxItem>
+                <ComboBoxItem>Precarious work</ComboBoxItem>
+                <ComboBoxItem>Crisis</ComboBoxItem>
+                <ComboBoxItem>Unemployed rate</ComboBoxItem>
+                <ComboBoxItem>Violence</ComboBoxItem>
+                <ComboBoxItem>War</ComboBoxItem>
+                <ComboBoxItem>Death rate(under 5 yrs)</ComboBoxItem>
+                <ComboBoxItem>Death rate</ComboBoxItem>
+                <ComboBoxItem>Birth rate</ComboBoxItem>
+                <ComboBoxItem>Average life expectancy</ComboBoxItem>
+                <ComboBoxItem>Fires</ComboBoxItem>
+                <ComboBoxItem>Floods</ComboBoxItem>
+                <ComboBoxItem>Droughts</ComboBoxItem>
+                <ComboBoxItem>Earthquakes</ComboBoxItem>
+                <ComboBoxItem>Hurricanes</ComboBoxItem>
+            </ComboBox>
+            <TextBox Grid.Row="2" FontFamily="Bahnschrift Light" FontSize="20" Foreground="Black" Margin="150 40 0 40"/>
+            <Button Grid.Column="1" Grid.Row="2" Margin="0 40 150 40" Content="OK" FontFamily="Bahnschrift Light" FontSize="20"/>
+        </Grid>
+
+        <Grid Name="MapNatural" Visibility="Hidden" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label Background="Black" Grid.RowSpan="2"/>
+            <Image Name="naturalMap" Source="naturalHazards.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="firesMap" Source="firesMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="floodsMap" Source="floodsMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="DraughtMap" Source="DraughtMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="EarthquakeMap" Source="EarthquakeMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="HurricaneMaps" Source="HurricaneMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Button Content="Statistics" Grid.Row="1" Margin="180 20"></Button>
+        </Grid>
+
+        <Grid Name="Mapsocial" Visibility="Hidden" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label Background="Black" Grid.RowSpan="2"/>
+            <Image Name="socialMap" Source="socialMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="ViolenceMap" Source="violenceMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="WarMap" Source="WarMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="death5Map" Source="death5Map.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="deathMap" Source="deathMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="birthMap" Source="birthMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="aleMap" Source="aleMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="famineMap" Source="famineMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="cancerMap" Source="cancerMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="hivMap" Source="hivMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="malariaMap" Source="malariaMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="tuberculosisMap" Source="tuberculosisMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Button Content="Statistics" Grid.Row="1" Margin="180 20"></Button>
+        </Grid>
+        <Grid Name="Mapeconomic" Visibility="Hidden" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label Background="Black" Grid.RowSpan="2"/>
+            <Image Name="economicMap" Source="economicMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="gnp" Source="gdp.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="gnpPerCapita" Source="gnpPerCapita.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="precariousWork" Source="precariousWork.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="crisis" Source="crisisMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Image Name="unemployedRate" Source="unemploymentRateMap.png" Grid.Row="0" Visibility="Hidden"></Image>
+            <Button Name="stadisticsEconomicB" Content="Statistics" Grid.Row="1" Margin="180 20" Click="StadisticsEconomicB_Click"></Button>
+        </Grid>
+
+        <Grid Name="stadisticsEconomic" Visibility="Hidden" Grid.Column="1">
+            <Label Background="Black"/>
+            <Image Source="statistics.png"/>
+        </Grid>
+    </Grid>
+</Window>
